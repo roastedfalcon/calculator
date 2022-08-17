@@ -7,7 +7,7 @@ const del = document.querySelector('#delete');
 const decimal = document.querySelector('#decimal');
 const operators = document.querySelectorAll('.operator');
 const eval = document.querySelector('#equals');
-console.log(operators);
+
 clear.addEventListener('click', () => window.location.reload());
 
 del.addEventListener('click', () => {
@@ -24,17 +24,22 @@ operators.forEach(operator => operator.addEventListener('click', opEvent));
 
 function opEvent(e) {
     if (display.textContent !== '0') {
+        let operator = [...operators].filter(operator => operator.classList.contains('darker'))[0];
         this.classList.toggle('darker');
         if (this.classList.contains('darker')) {
             unselectOthers(e);
+            if (typeof firstNum !== 'undefined') doSomething(operator);
             globalThis.firstNum = Number(display.textContent);
             nums.forEach(num => {
                 num.removeEventListener('click', getFirstNum);
-                num.addEventListener('click', getSecondNumber);
+                num.addEventListener('click', getNextNum);
             });
-            console.log('meow');
 }}
 }
+function changeOp() {
+    
+}
+
 
 
 //remove darker class from operator when another operator is selected
@@ -52,20 +57,29 @@ function getFirstNum() {
 }
 
 
-function getSecondNumber() {
+function getNextNum() {
     display.textContent = this.textContent;
-    operators.forEach(operator => operator.removeEventListener('click', opEvent));
+    //operators.forEach(operator => operator.removeEventListener('click', opEvent));
     nums.forEach(num => {
-        num.removeEventListener('click', getSecondNumber);
+        num.removeEventListener('click', getNextNum);
         num.addEventListener('click', () => display.textContent += num.textContent);
     });
+    
     addEvalEventListener();
 }
 
-function addEvalEventListener() {
+function doSomething(op) {
+    globalThis.secondNum = Number(display.textContent);
+    let result = operate(firstNum, secondNum, op.textContent);
+    display.textContent = result;
+    globalThis.firstNum = result;
+}
+
+
+function addEvalEventListener(op) {
     eval.addEventListener('click', () => {
         globalThis.secondNum = Number(display.textContent);
-        let operator = [...operators].filter(operator => operator.classList.contains('darker'))[0];
+        //let operator = [...operators].filter(operator => operator.classList.contains('darker'))[0];
         let result = operate(firstNum, secondNum, operator.textContent);
         display.textContent = result;
         operator.classList.remove('darker');
