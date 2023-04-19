@@ -1,71 +1,74 @@
-
 body {
-    text-align: center;
-    font-family: monospace;
-    font-size: large;
+  text-align: center;
+  font-family: monospace;
+  font-size: large;
 }
 
 button {
-    font-size: large;
-    border: 2px solid black;
+  font-size: large;
+  border: 2px solid black;
 }
 
-#calculator div,button {
-    border-radius: 3px;
+#calculator div,
+button {
+  border-radius: 3px;
 }
 
 #calculator {
-    margin: auto;
-    background-color: gray;
-    width: 400px;
-    height: 600px;
-    display: grid;
-    grid-template-rows: 1.3fr repeat(5, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 10px;
-    border-radius: 10px;
-
+  margin: auto;
+  background-color: gray;
+  width: 400px;
+  height: 600px;
+  display: grid;
+  grid-template-rows: 1.3fr repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 #display {
-    grid-column: 1 / -1;
-    background-color: lightgray;
-    font-size: xx-large;
-    font-weight: bold;
-    padding: 10px;
-    border: 2px solid black;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+  grid-column: 1 / -1;
+  background-color: lightgray;
+  font-size: xx-large;
+  font-weight: bold;
+  padding: 10px;
+  border: 2px solid black;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 #clear {
-    grid-column: 1 / span 2;
-    background-color: lightcoral;
+  grid-column: 1 / span 2;
+  background-color: lightcoral;
 }
 
 #delete {
-    grid-column: 3 / span 2;
-    background-color: lightblue;
+  grid-column: 3 / span 2;
+  background-color: lightblue;
 }
 
 .number {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 .operator {
-    background-color: lightsalmon;
+  background-color: lightsalmon;
 }
 
 #decimal {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 #equals {
-    background-color: lightgreen;
+  background-color: lightgreen;
 }
 
-.darker {
-    filter: brightness(60%);
+.selected {
+  filter: brightness(60%);
+}
+
+button:active {
+  filter: brightness(60%);
 }
