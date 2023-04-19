@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   //mode: "development",
-  entry: "./src/calculator.js",
+  entry: "./src/buttons.js",
   output: {
     filename: "index.js",
     path: path.resolve(__dirname, "dist"),

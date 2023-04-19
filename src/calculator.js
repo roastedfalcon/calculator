@@ -1,9 +1,6 @@
 //https://www.section.io/engineering-education/building-a-calculator-a-javascript-project-for-beginners/
 
 import {
-  addNumsEventListener,
-  addOperatorsEventListener,
-  addEqualsEventListener,
   updateDisplay,
   toggleSelected,
   removeSelectionFilter,
@@ -12,8 +9,6 @@ import {
 let firstNumber = "";
 let secondNumber = "";
 let operation = "";
-
-//let isNumberEntered = false;
 
 const compute = (number1, number2, operator) => {
   switch (operator) {
@@ -28,12 +23,10 @@ const compute = (number1, number2, operator) => {
   }
 };
 
-const getNumber = () => {};
-
 let previousOperation = null;
 let justPressedEquals = false;
 
-addNumsEventListener((e) => {
+export const appendNumber = (e) => {
   if (justPressedEquals === true) {
     firstNumber = "";
     secondNumber = "";
@@ -55,9 +48,9 @@ addNumsEventListener((e) => {
       updateDisplay(secondNumber);
     }
   }
-});
+};
 
-addOperatorsEventListener((e) => {
+export const chooseOperator = (e) => {
   if (justPressedEquals === true) {
     secondNumber = "";
     justPressedEquals = false;
@@ -82,9 +75,9 @@ addOperatorsEventListener((e) => {
 
     previousOperation = target;
   }
-});
+};
 
-addEqualsEventListener(() => {
+export const equals = () => {
   if (firstNumber != "" && secondNumber != "" && operation != "") {
     let result = compute(firstNumber, secondNumber, operation);
     updateDisplay(result);
@@ -92,4 +85,4 @@ addEqualsEventListener(() => {
     firstNumber = result;
     justPressedEquals = true;
   }
-});
+};

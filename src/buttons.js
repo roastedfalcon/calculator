@@ -1,12 +1,12 @@
+import { appendNumber, chooseOperator, equals } from "./calculator";
+
 const display = document.querySelector("#display");
-export const nums = document.querySelectorAll(".number");
+const nums = document.querySelectorAll(".number");
 const clear = document.querySelector("#clear");
 const del = document.querySelector("#delete");
 const decimal = document.querySelector("#decimal");
 const operators = document.querySelectorAll(".operator");
-const equals = document.querySelector("#equals");
-
-clear.addEventListener("click", () => window.location.reload());
+const equalsButton = document.querySelector("#equals");
 
 /*
 del.addEventListener("click", () => {
@@ -15,22 +15,8 @@ del.addEventListener("click", () => {
 });
 */
 
-export const addNumsEventListener = (callback) => {
-  nums.forEach((num) => num.addEventListener("click", callback));
-};
-
 export const updateDisplay = (string) => {
   display.textContent = string;
-};
-
-export const addOperatorsEventListener = (callback) => {
-  operators.forEach((operator) => {
-    operator.addEventListener("click", callback);
-  });
-};
-
-export const addEqualsEventListener = (callback) => {
-  equals.addEventListener("click", callback);
 };
 
 export const toggleSelected = (element) => element.classList.toggle("selected");
@@ -38,3 +24,14 @@ export const toggleSelected = (element) => element.classList.toggle("selected");
 export const removeSelectionFilter = () => {
   operators.forEach((operator) => operator.classList.remove("selected"));
 };
+
+//event listeners
+nums.forEach((num) => num.addEventListener("click", appendNumber));
+
+operators.forEach((operator) => {
+  operator.addEventListener("click", chooseOperator);
+});
+
+equalsButton.addEventListener("click", equals);
+
+clear.addEventListener("click", () => window.location.reload());
