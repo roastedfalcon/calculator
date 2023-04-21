@@ -4,6 +4,7 @@ import {
   updateDisplay,
   toggleSelected,
   removeSelectionFilter,
+  getDisplayText,
 } from "./buttons";
 
 let firstNumber = "";
@@ -86,3 +87,10 @@ export const equals = () => {
     justPressedEquals = true;
   }
 };
+
+/* #TODO
+export const deleteDigit = () => {
+  let displayText = getDisplayText();
+  if (displayText == "") return;
+};
+*/

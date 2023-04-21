@@ -8,16 +8,11 @@ const decimal = document.querySelector("#decimal");
 const operators = document.querySelectorAll(".operator");
 const equalsButton = document.querySelector("#equals");
 
-/*
-del.addEventListener("click", () => {
-  display.textContent = display.textContent.slice(0, -1);
-  if (display.textContent == "") display.textContent = "0";
-});
-*/
-
 export const updateDisplay = (string) => {
   display.textContent = string;
 };
+
+export const getDisplayText = () => display.textContent;
 
 export const toggleSelected = (element) => element.classList.toggle("selected");
 
@@ -33,5 +28,12 @@ operators.forEach((operator) => {
 });
 
 equalsButton.addEventListener("click", equals);
+
+/* #TODO
+del.addEventListener("click", () => {
+  display.textContent = display.textContent.slice(0, -1);
+  if (display.textContent == "") display.textContent = "0";
+});
+*/
 
 clear.addEventListener("click", () => window.location.reload());
